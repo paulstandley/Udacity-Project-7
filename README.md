@@ -96,3 +96,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+--------------------------------------------------------------------------------
+
+## Done
+
+* TODO: Instead of using this state variable to keep track of which page
+we're on, use the URL in the browser's address bar. This will ensure that
+users can use the browser's back and forward buttons to navigate between
+pages, as well as provide a good URL they can bookmark and share. ```  :)  ```
+
+----------------------------------------------------
+
+## Doing
+
+*
+
+
+---------------------------------------------------------
