@@ -1,7 +1,7 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import ListOfBooks from './ListOfBooks';
 import SearchForBooks from './SearchForBooks';
  
@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
-/* Two new components SearchForBooks and ListOfBooks the instate TODO is done  */
+/* Two new components SearchForBooks and ListOfBooks for the instate TODO. it is done :)  */
   render() {
     return (
       <div className="app">
