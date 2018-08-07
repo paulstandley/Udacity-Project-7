@@ -4,6 +4,8 @@
 
 ![Profile Pick](http://res.cloudinary.com/pieol2/image/upload/v1516543296/profile-small.png)
 
+## Front End Website Development Nano Degree Google Scholarship By Udacity
+
 ### Udacity Project 7
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
@@ -110,7 +112,21 @@ pages, as well as provide a good URL they can bookmark and share. ```  :)  ```
 
 ## Doing
 
-*
+* Does the search page have a search input that lets users search for books?
+
+1) The search page has a search input field.
+
+2) The search page behaves correctly:
+
+a) As the user types into the search field, books that match the query are displayed on the page.
+
+b) Search results are not shown when all of the text is deleted out of the search input box.
+
+c) Invalid queries are handled and prior search results are not shown.
+
+d) The search works correctly when a book does not have a thumbnail or an author. (To test this, try searching for "poetry" and "biography").
+
+e) The user is able to search for multiple words, such as “artificial intelligence.”
 
 
 ---------------------------------------------------------
