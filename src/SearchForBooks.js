@@ -61,11 +61,11 @@ class SearchForBooks extends React.Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.displayBooks.map((book) => (
+            {this.state.displayBooks.map((book, index, array) => (
               <li key={`KEYNUM_${Math.floor(Math.random() * 100000)}`}>
                 <div className="book">
                    <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[0].imageLinks ? `url(${book.map((currentValue, index, array) => array[index].imageLinks.thumbnail)})` : '' }}></div>
+                      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
                         <select value={this.state.shelf} onChange={thing => thing}>
                           <option value="move" disabled>Move to...</option>
@@ -76,8 +76,8 @@ class SearchForBooks extends React.Component {
                         </select>
                       </div>
                     </div>
-                    <div className="book-title">{book[0].title}</div>
-                    <div className="book-authors">{book[0].authors ? book[0].authors.toString() : ''}</div>
+                    <div className="book-title">{book[index].title}</div>
+                    <div className="book-authors">{book[index].authors ? book[index].authors.toString() : ''}</div>
                   </div>
                 </li>
               ))}
