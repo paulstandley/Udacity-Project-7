@@ -9,13 +9,20 @@ class SearchForBooks extends React.Component {
     query: '',
     displayBooks: [],
     num: 1,
-    shelf: ''
+    shelf: ["currentlyReading", "wantToRead", "read", "none"]
   }
   /* need citatoiin */
   componentDidMount() {
     BooksAPI.getAll().then((books) => {this.setState({books})})
   }
-  
+  moveBook = (evt) => {
+    if(evt.target.value === this.state.shelf[0]) {
+      console.log(evt)
+    }
+    console.log(evt.target.value)
+    console.log(this.state.shelf[0])
+    
+  }
   /* need citation */
   updateDisplay = (query) => {
     let displayBooks = [];
@@ -67,8 +74,8 @@ class SearchForBooks extends React.Component {
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
-                        <select value={this.state.shelf} onChange={thing => thing}>
-                          <option value="move" disabled>Move to...</option>
+                        <select value={this.state.shelf[0]} onChange={this.moveBook}>
+                          <option value="move" disabled={true}>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
                           <option value="read">Read</option>
@@ -76,7 +83,7 @@ class SearchForBooks extends React.Component {
                         </select>
                       </div>
                     </div>
-                    <div className="book-title">{book[index].title}</div>
+                    <div className="book-title">{book[index].title ? book[index].title : ''}</div>
                     <div className="book-authors">{book[index].authors ? book[index].authors.toString() : ''}</div>
                   </div>
                 </li>
