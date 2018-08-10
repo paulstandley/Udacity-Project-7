@@ -3,6 +3,9 @@ import './App.css';
 import { Link } from 'react-router-dom'
  
 class ListOfBooks extends React.Component {
+  state= {
+    shelf: ["wantToRead", "currentlyReading", "read","none"]
+  }
   render() { 
     return ( 
       <div className="list-books">
@@ -11,7 +14,7 @@ class ListOfBooks extends React.Component {
       </div>
       <div className="list-books-content">
         <div>
-          <div className="bookshelf">
+          <div className="bookshelf" id="currentlyReading">
             <h2 className="bookshelf-title">Currently Reading</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
@@ -54,7 +57,7 @@ class ListOfBooks extends React.Component {
               </ol>
             </div>
           </div>
-          <div className="bookshelf">
+          <div className="bookshelf" id="wantToRead">
             <h2 className="bookshelf-title">Want to Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
@@ -97,7 +100,7 @@ class ListOfBooks extends React.Component {
               </ol>
             </div>
           </div>
-          <div className="bookshelf">
+          <div className="bookshelf" id="read">
             <h2 className="bookshelf-title">Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
