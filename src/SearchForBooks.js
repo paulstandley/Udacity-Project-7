@@ -4,52 +4,12 @@ import './App.css';
 import * as BooksAPI from './BooksAPI';
 
 class SearchForBooks extends React.Component {
-  state = {
-    books: [],
-    query: '',
-    displayBooks: [],
-    num: 1,
-    shelf: ["currentlyReading", "wantToRead", "read", "none"]
-  }
-  /* need citatoiin */
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {this.setState({books})})
-  }
-  moveBook = (evt) => {
-    if(evt.target.value === this.state.shelf[0]) {
-      console.log(evt)
-    }
-    console.log(evt.target.value)
-    console.log(this.state.shelf[0])
-    
-  }
-  /* need citation */
-  updateDisplay = (query) => {
-    let displayBooks = [];
-    this.setState({query});
-    if(query) {
-      BooksAPI.search(query).then(data => {
-        if(data.length) {
-          displayBooks = data.map(() => {
-            let num = this.state.books.findIndex(compVal => compVal.id === data.id);
-            if(num >= 0) {
-              return this.state.books[num];
-            }else{
-              return data;
-            }
-          })
-        }
-        this.setState({displayBooks});
-      })
-    }
-    else{
-      this.setState({displayBooks});
-    }
-  }
   
+  /*  */  
   
   render() { 
-    let { query } = this.state;
+    let { query } = this.props;
+    console.log(query)
     return ( 
       <div className="search-books">
         <div className="search-books-bar">
@@ -63,18 +23,18 @@ class SearchForBooks extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.updateDisplay(evt.target.value)}/>
+          <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.props.updateDisplay(evt.target.value)}/>
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.displayBooks.map((book, index, array) => (
+            {this.props ? '' : this.props.displayBooks.map((book, index, array) => (
               <li key={`KEYNUM_${Math.floor(Math.random() * 100000)}`}>
                 <div className="book">
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
-                        <select value={this.state.shelf[0]} onChange={this.moveBook}>
+                        <select value={this.props.shelf[0]} onChange={() => this.props.moveBook()}>
                           <option value="move" disabled={true}>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
@@ -87,7 +47,7 @@ class SearchForBooks extends React.Component {
                     <div className="book-authors">{book[index].authors ? book[index].authors.toString() : ''}</div>
                   </div>
                 </li>
-              ))}
+              )) }
           </ol>
         </div>
       </div>

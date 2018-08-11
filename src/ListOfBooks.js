@@ -3,9 +3,7 @@ import './App.css';
 import { Link } from 'react-router-dom'
  
 class ListOfBooks extends React.Component {
-  state= {
-    shelf: ["wantToRead", "currentlyReading", "read","none"]
-  }
+  
   render() { 
     return ( 
       <div className="list-books">
