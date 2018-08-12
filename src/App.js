@@ -105,7 +105,7 @@ class BooksApp extends React.Component {
         </div>
        )} />
         <Route exact path='/' render={() => ( 
-          <ListOfBooks/> 
+          <ListOfBooks imgUrl={this.state}/> 
         )} />
       </div>
     )
