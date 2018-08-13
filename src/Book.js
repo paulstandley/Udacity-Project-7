@@ -1,17 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 
 class Book extends Component {
-  state = {  }
-  
+  state = {  
+    books: []
+  }
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {this.setState({books})})
+  }
+
   render() { 
-    const { thing } = this.props;
+    console.log(this.state.books);
     return (
-      <ol>
-        {thing === undefined ? thing.map( (currentItem, index, array) => (
+      <fragment>
+        {this.state.length !== 0 ? this.state.books.map( (currentItem, index, array) => (
         <li key={`KRYNUM_${currentItem.id}`}>
           <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${array.lenght ? array[index].imageLinks.thumbnail : 'http://res.cloudinary.com/pieol2/image/upload/v1527370300/lou.jpg'})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.state.books.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
               <div className="book-shelf-changer">
                 <select onClick={(evt) => console.log(evt.target.value)}>
                   <option value="move" disabled>Move to...</option>
@@ -22,16 +28,16 @@ class Book extends Component {
                 </select>
               </div>
             </div>
-          <div className="book-title">{this.props.imgUrl.books.lenght ? this.props.imgUrl.books[0].tille : 'It\'s My Book OK!'}</div>
-          <div className="book-authors">{this.props.imgUrl.books.lenght ? this.props.imgUrl.books[0].authors : 'Louise why I Killed Paul Standley'}</div>
+          <div className="book-title">{array.length !== 0 ? array[index].title : ''}</div>
+          <div className="book-authors">{array.length !== 0 ? array[index].authors : ''}</div>
           </div>
         </li>
         ))
-      : 'Errrrrrrrr'  }  
-      </ol>
-  
-    // fix it later bedtime :) 
-      }}]]}}}}}}}}}}}}}]]]
+      : ''  }  
+      </fragment>
+    )
+  }
+}    
     
   
 
