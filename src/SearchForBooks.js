@@ -34,7 +34,7 @@ class SearchForBooks extends React.Component {
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
-                        <select value={this.props.shelf[0]} onChange={() => this.props.moveBook()}>
+                        <select value={this.props.shelf[index]} onChange={() => this.props.moveBook()}>
                           <option value="move" disabled={true}>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>

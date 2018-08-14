@@ -82,7 +82,7 @@ class BooksApp extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.displayBooks.map((book, index, array) => (
-                <li key={`KEYNUM_${Math.floor(Math.random() * 100000)}`}>
+                <li key={`KEYNUM_${book.id}`}>
                   <div className="book">
                      <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>

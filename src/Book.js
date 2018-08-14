@@ -10,10 +10,10 @@ class Book extends Component {
   }
 
   render() { 
-    console.log(this.state.books);
+      let filteredBooks = this.state.books.filter(value => value.shelf === this.state.books[3].shelf);  
     return (
-      <fragment>
-        {this.state.length !== 0 ? this.state.books.map( (currentItem, index, array) => (
+      <React.Fragment>
+        {this.state.length !== 0 ? filteredBooks.map((currentItem, index, array) => (
         <li key={`KRYNUM_${currentItem.id}`}>
           <div className="book">
             <div className="book-top">
@@ -34,12 +34,12 @@ class Book extends Component {
         </li>
         ))
       : ''  }  
-      </fragment>
+      </React.Fragment>
     )
   }
 }    
     
-  
+  // Bed time got to make a state or props ? :) get everything from app or leave it in book
 
  
 export default Book;

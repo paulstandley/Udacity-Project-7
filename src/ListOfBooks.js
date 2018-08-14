@@ -6,6 +6,7 @@ import Book from "./Book";
 class ListOfBooks extends React.Component {
   
   render() { 
+    console.log(this.props.data.booksAPP.filter(value => value.shelf === 'currentlyReading'));
     return ( 
       <div className="list-books">
         <div className="list-books-title">
@@ -17,9 +18,9 @@ class ListOfBooks extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  <li>
+                    
                     <Book data={this.props}/>
-                  </li>
+                  
                 </ol>
               </div>
             </div>
@@ -27,9 +28,9 @@ class ListOfBooks extends React.Component {
             <h2 className="bookshelf-title">Want to Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-                <li>
+                
                   <Book data={this.props}/>
-                </li>
+              
               </ol>
             </div>
           </div>
@@ -37,9 +38,9 @@ class ListOfBooks extends React.Component {
             <h2 className="bookshelf-title">Read</h2>
             <div className="bookshelf-books">                
               <ol className="books-grid">
-                <li>
+                
                   <Book data={this.props}/>
-                </li>
+                
               </ol>
             </div>
           </div>
