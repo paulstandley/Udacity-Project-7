@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './App.css';
-import * as BooksAPI from './BooksAPI';
+
 
 class SearchForBooks extends React.Component {
   
@@ -23,7 +23,7 @@ class SearchForBooks extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.props.updateDisplay(evt.target.value)}/>
+          <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.props.updateDisplay(evt.target.value.trim())}/>
           </div>
         </div>
         <div className="search-books-results">
@@ -34,7 +34,7 @@ class SearchForBooks extends React.Component {
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
-                        <select value={this.props.shelf[0]} onChange={() => this.props.moveBook()}>
+                        <select value={this.props.shelf[index]} onChange={() => this.props.moveBook()}>
                           <option value="move" disabled={true}>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>

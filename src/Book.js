@@ -1,17 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './App';
 
 class Book extends Component {
-  state = {  }
-  
+  state = {
+    gotProps: true,
+  }
+
+
   render() { 
-    const { thing } = this.props;
+
+ 
+    
+    console.log(this.props.shelf);
+    console.log(this.props);
+     // let filteredBooks = this.props.books.filter(value => value.shelf === this.props.books[3].shelf);  
     return (
-      <ol>
-        {thing === undefined ? thing.map( (currentItem, index, array) => (
+      <React.Fragment>
+        {this.state.gotProps && this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
         <li key={`KRYNUM_${currentItem.id}`}>
           <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${array.lenght ? array[index].imageLinks.thumbnail : 'http://res.cloudinary.com/pieol2/image/upload/v1527370300/lou.jpg'})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
               <div className="book-shelf-changer">
                 <select onClick={(evt) => console.log(evt.target.value)}>
                   <option value="move" disabled>Move to...</option>
@@ -22,18 +31,18 @@ class Book extends Component {
                 </select>
               </div>
             </div>
-          <div className="book-title">{this.props.imgUrl.books.lenght ? this.props.imgUrl.books[0].tille : 'It\'s My Book OK!'}</div>
-          <div className="book-authors">{this.props.imgUrl.books.lenght ? this.props.imgUrl.books[0].authors : 'Louise why I Killed Paul Standley'}</div>
+          <div className="book-title">{array.length !== 0 ? array[index].title : ''}</div>
+          <div className="book-authors">{array.length !== 0 ? array[index].authors : ''}</div>
           </div>
         </li>
         ))
-      : 'Errrrrrrrr'  }  
-      </ol>
-  
-    // fix it later bedtime :) 
-      }}]]}}}}}}}}}}}}}]]]
+      : ''  }  
+      </React.Fragment>
+    )
+  }
+}    
     
-  
+  // Bed time got to make a props or props ? :) get everything from app or leave it in book
 
  
 export default Book;

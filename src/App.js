@@ -1,6 +1,6 @@
 import React from 'react';
-import * as BooksAPI from './BooksAPI'
 import './App.css'
+import * as BooksAPI from './BooksAPI';
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ListOfBooks from './ListOfBooks';
@@ -14,22 +14,26 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    books: [],
+    booksAPP: [],
     query: '',
     displayBooks: [],
     num: 1,
-    shelf: ["currentlyReading", "wantToRead", "read", "none"],
+    BOOKS: [],
     showSearchPage: false
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {this.setState({books})})
+    BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})})
   }
-  moveBookHandler = (evt) => {
 
-    console.log(evt.target.value)
+  moveBookHandler = (evt) => {
+    /*
+    BooksAPI.update(book, shelf).then(() => { 
+      console.log(evt.target.value)
     console.log(this.state.shelf[0])
-    
+     });
+    */
+   console.log(evt.target.value);
   }
   /* */
   updateDisplay = (query) => {
@@ -39,7 +43,7 @@ class BooksApp extends React.Component {
       BooksAPI.search(query).then(data => {
         if(data.length) {
           displayBooks = data.map(() => {
-            let num = this.state.books.findIndex(compVal => compVal.id === data.id);
+            let num = this.state.booksAPP.findIndex(compVal => compVal.id === data.id);
             if(num >= 0) {
               return this.state.books[num];
             }else{
@@ -81,7 +85,7 @@ class BooksApp extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.displayBooks.map((book, index, array) => (
-                <li key={`KEYNUM_${Math.floor(Math.random() * 100000)}`}>
+                <li key={`KEYNUM_${index}`}>
                   <div className="book">
                      <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
@@ -105,7 +109,7 @@ class BooksApp extends React.Component {
         </div>
        )} />
         <Route exact path='/' render={() => ( 
-          <ListOfBooks imgUrl={this.state}/> 
+          <ListOfBooks data={this.state}/> 
         )} />
       </div>
     )
