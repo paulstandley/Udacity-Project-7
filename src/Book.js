@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import * as BooksAPI from './BooksAPI';
+import './App';
 
 class Book extends Component {
-  state = {  
-    books: []
-  }
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {this.setState({books})})
+  state = {
+    gotProps: true,
   }
 
+
   render() { 
-      let filteredBooks = this.state.books.filter(value => value.shelf === this.state.books[3].shelf);  
+
+ 
+    
+    console.log(this.props.shelf);
+    console.log(this.props);
+     // let filteredBooks = this.props.books.filter(value => value.shelf === this.props.books[3].shelf);  
     return (
       <React.Fragment>
-        {this.state.length !== 0 ? filteredBooks.map((currentItem, index, array) => (
+        {this.state.gotProps && this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
         <li key={`KRYNUM_${currentItem.id}`}>
           <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.state.books.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
               <div className="book-shelf-changer">
                 <select onClick={(evt) => console.log(evt.target.value)}>
                   <option value="move" disabled>Move to...</option>
@@ -39,7 +42,7 @@ class Book extends Component {
   }
 }    
     
-  // Bed time got to make a state or props ? :) get everything from app or leave it in book
+  // Bed time got to make a props or props ? :) get everything from app or leave it in book
 
  
 export default Book;

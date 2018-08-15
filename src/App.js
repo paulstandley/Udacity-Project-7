@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
     query: '',
     displayBooks: [],
     num: 1,
-    shelf: ["currentlyReading", "wantToRead", "read", "none"],
+    BOOKS: [],
     showSearchPage: false
   }
 
@@ -27,10 +27,13 @@ class BooksApp extends React.Component {
   }
 
   moveBookHandler = (evt) => {
-
-    console.log(evt.target.value)
+    /*
+    BooksAPI.update(book, shelf).then(() => { 
+      console.log(evt.target.value)
     console.log(this.state.shelf[0])
-    
+     });
+    */
+   console.log(evt.target.value);
   }
   /* */
   updateDisplay = (query) => {
@@ -82,7 +85,7 @@ class BooksApp extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.displayBooks.map((book, index, array) => (
-                <li key={`KEYNUM_${book.id}`}>
+                <li key={`KEYNUM_${index}`}>
                   <div className="book">
                      <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>

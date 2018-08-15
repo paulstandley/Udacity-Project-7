@@ -2,11 +2,27 @@ import React from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
 import Book from "./Book";
- 
+
 class ListOfBooks extends React.Component {
-  
+  state = {
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
+  }
   render() { 
+    // display shelf
     console.log(this.props.data.booksAPP.filter(value => value.shelf === 'currentlyReading'));
+
+    let currentlyReading = this.props.data.booksAPP.filter(value => value.shelf === 'currentlyReading');
+    console.log(currentlyReading);
+
+    let wantToRead = this.props.data.booksAPP.filter(value => value.shelf === 'wantToRead');
+    console.log(wantToRead)
+    ;
+    let read = this.props.data.booksAPP.filter(value => value.shelf === 'read');
+    console.log(read);
+    
+    
     return ( 
       <div className="list-books">
         <div className="list-books-title">
@@ -18,8 +34,8 @@ class ListOfBooks extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                    
-                    <Book data={this.props}/>
+                                      
+                    <Book shelf={currentlyReading}/>
                   
                 </ol>
               </div>
@@ -29,7 +45,7 @@ class ListOfBooks extends React.Component {
             <div className="bookshelf-books">
               <ol className="books-grid">
                 
-                  <Book data={this.props}/>
+                  <Book shelf={wantToRead}/>
               
               </ol>
             </div>
@@ -39,7 +55,7 @@ class ListOfBooks extends React.Component {
             <div className="bookshelf-books">                
               <ol className="books-grid">
                 
-                  <Book data={this.props}/>
+                  <Book shelf={read}/>
                 
               </ol>
             </div>
