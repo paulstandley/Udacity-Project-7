@@ -26,14 +26,9 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})})
   }
 
-  moveBookHandler = (evt) => {
-    /*
-    BooksAPI.update(book, shelf).then(() => { 
-      console.log(evt.target.value)
-    console.log(this.state.shelf[0])
-     });
-    */
-   console.log(evt.target.value);
+  moveBookHandler = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+   
   }
   /* */
   updateDisplay = (query) => {
@@ -45,7 +40,7 @@ class BooksApp extends React.Component {
           displayBooks = data.map(() => {
             let num = this.state.booksAPP.findIndex(compVal => compVal.id === data.id);
             if(num >= 0) {
-              return this.state.books[num];
+              return this.state.booksAPP[num];
             }else{
               return data;
             }
@@ -63,6 +58,7 @@ class BooksApp extends React.Component {
 /* Two new components SearchForBooks and ListOfBooks for the instate TODO. it is done :)  */
   render() {
     const  { query } = this.state;
+    console.log(query)
     return (
       <div className="app">
         <Route exact path='/search' render={() =>  (
@@ -90,12 +86,12 @@ class BooksApp extends React.Component {
                      <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                         <div className="book-shelf-changer">
-                          <select value={this.state.shelf[0]} onChange={(evt) => this.moveBookHandler(evt)}>
-                            <option value="move" disabled={true}>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
+                          <select value={this.state.shelf} onChange={(evt) => this.moveBookHandler(book, evt.target.value)}>
+                            <option id="option_0" value="move" disabled={true}>Move to...</option>
+                            <option id="option_1" value="currentlyReading">Currently Reading</option>
+                            <option id="option_2" value="wantToRead">Want to Read</option>
+                            <option id="option_3" value="read">Read</option>
+                            <option id="option_4" value="none">None</option>
                           </select>
                         </div>
                       </div>
@@ -109,7 +105,7 @@ class BooksApp extends React.Component {
         </div>
        )} />
         <Route exact path='/' render={() => ( 
-          <ListOfBooks data={this.state}/> 
+          <ListOfBooks moveBookHandler={this.moveBookHandler} data={this.state}/> 
         )} />
       </div>
     )

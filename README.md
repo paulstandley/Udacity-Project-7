@@ -112,17 +112,17 @@ pages, as well as provide a good URL they can bookmark and share. ```  :)  ```
 
 ## Doing
 
-* Does the search page have a search input that lets users search for books?
+* ~~Does the search page have a search input that lets users search for books?~~
 
 1) ~~The search page has a search input field.~~
 
-2) The search page behaves correctly:
+2) ~~The search page behaves correctly:~~
 
 a) ~~As the user types into the search field, books that match the query are displayed on the page.~~
 
 b) ~~Search results are not shown when all of the text is deleted out of the search input box.~~
 
-c) Invalid queries are handled and prior search results are not shown.
+c) ~~Invalid queries are handled and prior search results are not shown.~~
 
 d) ~~The search works correctly when a book does not have a thumbnail or an author. (To test this, try searching for "poetry" and "biography").~~
 

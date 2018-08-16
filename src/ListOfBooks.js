@@ -35,7 +35,7 @@ class ListOfBooks extends React.Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                                       
-                    <Book shelf={currentlyReading}/>
+                    <Book data={this.props} moveBookHandler={this.props.moveBookHandler} shelf={currentlyReading}/>
                   
                 </ol>
               </div>
@@ -45,7 +45,7 @@ class ListOfBooks extends React.Component {
             <div className="bookshelf-books">
               <ol className="books-grid">
                 
-                  <Book shelf={wantToRead}/>
+                  <Book data={this.props} moveBookHandler={this.props.moveBookHandler} shelf={wantToRead}/>
               
               </ol>
             </div>
@@ -55,7 +55,7 @@ class ListOfBooks extends React.Component {
             <div className="bookshelf-books">                
               <ol className="books-grid">
                 
-                  <Book shelf={read}/>
+                  <Book data={this.props} moveBookHandler={this.props.moveBookHandler} shelf={read}/>
                 
               </ol>
             </div>

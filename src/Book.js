@@ -10,9 +10,9 @@ class Book extends Component {
   render() { 
 
  
-    
+    console.log(this.props.data.data.booksAPP)
     console.log(this.props.shelf);
-    console.log(this.props);
+    console.log(this.props.moveBookHandler);
      // let filteredBooks = this.props.books.filter(value => value.shelf === this.props.books[3].shelf);  
     return (
       <React.Fragment>
@@ -22,7 +22,7 @@ class Book extends Component {
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
               <div className="book-shelf-changer">
-                <select onClick={(evt) => console.log(evt.target.value)}>
+                <select onChange={(evt) => this.props.moveBookHandler(this.props.data.data.booksAPP[index], evt.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>

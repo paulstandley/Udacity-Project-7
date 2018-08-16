@@ -29,17 +29,17 @@ class SearchForBooks extends React.Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {this.props ? '' : this.props.displayBooks.map((book, index, array) => (
-              <li key={`KEYNUM_${Math.floor(Math.random() * 100000)}`}>
+              <li key={`KEYNUM_${book.id}`}>
                 <div className="book">
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
                         <select value={this.props.shelf[index]} onChange={() => this.props.moveBook()}>
                           <option value="move" disabled={true}>Move to...</option>
-                          <option value="currentlyReading">Currently Reading</option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
+                          <option id="option_1" value="currentlyReading">Currently Reading</option>
+                          <option id="option_2" value="wantToRead">Want to Read</option>
+                          <option id="option_3" value="read">Read</option>
+                          <option id="option_4" value="none">None</option>
                         </select>
                       </div>
                     </div>
