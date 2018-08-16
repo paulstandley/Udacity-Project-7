@@ -100,33 +100,126 @@ This repository is the starter code for _all_ Udacity students. Therefore, we mo
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 --------------------------------------------------------------------------------
+-------------------------------------------------------------
 
-## Done
+## PROJECT SPECIFICATION
+
+MyReads: A Book Lending App
+
+## Application Setup
+
+---------------------------------------------------
+
+### Done
+
+### Is the application easy to install and start?
+
+The application was created with create-react-app and requires only
+```BASH 
+npm install
+```
+
+and `:)`
+
+```BASH
+npm start
+```
+
+ to get it installed and launched. `:)`
+
+---------------------------------------------------------------
+
+### Does the application include README with clear installation and launch instructions?
+
+An updated README that describes the project and has instructions for installing and launching the project is included. `:)`
+
+---------------------------------------------------
+
+## Main Page
+
+### __CRITERIA__
+
+__Does the main page show three categories (or “bookshelves”) for books (currently reading, want to read, and read)?__
+
+The main page shows 3 shelves for books, and each book is shown on the correct shelf. `:)`
+
+__Does the main page allow users to move books between shelves?__
+
+The main page shows a control that allows users to move books between shelves. The control should be tied to each book instance. The functionality of moving a book to a different shelf works correctly.
+
+__Does information persist between page refreshes?__
+
+When the browser is refreshed, the same information is displayed on the page.`:)`
+
+------------------------------------------------------------------------------------
+
+## Search Page
+
+### __CRITERIA__
+
+### __Does the search page have a search input that lets users search for books?__
+
+1) The search page has a search input field. `:)`
+
+2) The search page behaves correctly: `:)`
+
+a) As the user types into the search field, books that match the query are displayed on the page.
+
+b) Search results are not shown when all of the text is deleted out of the search input box.
+
+c) Invalid queries are handled and prior search results are not shown.
+
+d) The search works correctly when a book does not have a thumbnail or an author. (To test this, try searching for "poetry" and "biography").
+
+e) The user is able to search for multiple words, such as “artificial intelligence.”
+
+### __Do the search results allow a user to categorize a book as “currently reading”, “want to read”, or “read”?__
+
+Search results on the search page allow the user to select “currently reading”, “want to read”, or “read” to place the book in a certain shelf. `:)`
+
+If a book is assigned to a shelf on the main page and that book appears on the search page, the correct shelf should be selected on the search page. If that book's shelf is changed on the search page, that change should be reflected on the main page as well. The option "None" should be selected if a book has not been assigned to a shelf. `:)`
+
+### __Do selections made on the search page show up on the main page?__
+
+When an item is categorized on the search page and the user navigates to the main page, it appears on that shelf in the main page. `:)`
+
+-----------------------------------------------------------------------------------------
+
+## __Routing__
+
+### __Does the main page link to the search page?__
+
+The main page contains a link to the search page. When the link is clicked, the search page is displayed and the URL in the browser’s address bar is /search. `:)`
+
+### __Does the search page link back to the main page?__
+
+The search page contains a link to the main page. When the link is clicked, the main page is displayed and the URL in the browser’s address bar is /. `:)`
 
 * TODO: Instead of using this state variable to keep track of which page
 we're on, use the URL in the browser's address bar. This will ensure that
 users can use the browser's back and forward buttons to navigate between
 pages, as well as provide a good URL they can bookmark and share. ```  :)  ```
 
-----------------------------------------------------
+-------------------------------------------------------------------------------
 
-## Doing
+## __Code Functionality__
 
-* ~~Does the search page have a search input that lets users search for books?~~
+### CRITERIA
 
-1) ~~The search page has a search input field.~~
+### __Does the project code handle state management appropriately?__
 
-2) ~~The search page behaves correctly:~~
+Component state is passed down from parent components to child components. The state variable is not modified directly -
 
-a) ~~As the user types into the search field, books that match the query are displayed on the page.~~
+```js
+setState()
+```
 
-b) ~~Search results are not shown when all of the text is deleted out of the search input box.~~
+function is used correctly. `:)`
 
-c) ~~Invalid queries are handled and prior search results are not shown.~~
+Books have the same state on both the search page and the main application page: If a book is on a bookshelf, that is reflected in both locations. `:)`
 
-d) ~~The search works correctly when a book does not have a thumbnail or an author. (To test this, try searching for "poetry" and "biography").~~
+### __Is JSX formatted properly?__
 
-e) ~~The user is able to search for multiple words, such as “artificial intelligence.”~~
+All JSX code is formatted properly and functional.
 
-
----------------------------------------------------------
+------------------------------------------------

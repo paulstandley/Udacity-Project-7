@@ -23,18 +23,18 @@ class SearchForBooks extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.props.updateDisplay(evt.target.value.trim())}/>
+          <input  type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.props.updateDisplay(evt.target.value.trim())}/>
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
             {this.props ? '' : this.props.displayBooks.map((book, index, array) => (
-              <li key={`KEYNUM_${book.id}`}>
+              <li key={`${book[index].id}`}>
                 <div className="book">
                    <div className="book-top">
                       <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                       <div className="book-shelf-changer">
-                        <select value={this.props.shelf[index]} onChange={() => this.props.moveBook()}>
+                        <select value={index} onChange={(evt) => this.props.moveBookHandler(book[index], evt.target.value)}>
                           <option value="move" disabled={true}>Move to...</option>
                           <option id="option_1" value="currentlyReading">Currently Reading</option>
                           <option id="option_2" value="wantToRead">Want to Read</option>

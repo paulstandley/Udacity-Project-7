@@ -19,6 +19,7 @@ class BooksApp extends React.Component {
     displayBooks: [],
     num: 1,
     BOOKS: [],
+    shelf: ["wantToRead", "currentlyReading", "read"], 
     showSearchPage: false
   }
 
@@ -27,8 +28,11 @@ class BooksApp extends React.Component {
   }
 
   moveBookHandler = (book, shelf) => {
-    BooksAPI.update(book, shelf)
-   
+    console.log(book);
+    console.log(shelf);
+    BooksAPI.update(book, shelf);
+   //  books move wrong
+   BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})})
   }
   /* */
   updateDisplay = (query) => {
@@ -81,12 +85,12 @@ class BooksApp extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.displayBooks.map((book, index, array) => (
-                <li key={`KEYNUM_${index}`}>
+                <li key={`${book[index].id}`}>
                   <div className="book">
                      <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                         <div className="book-shelf-changer">
-                          <select value={this.state.shelf} onChange={(evt) => this.moveBookHandler(book, evt.target.value)}>
+                          <select value={this.state.shelf} onChange={(evt) => this.moveBookHandler(book[index], evt.target.value)}>
                             <option id="option_0" value="move" disabled={true}>Move to...</option>
                             <option id="option_1" value="currentlyReading">Currently Reading</option>
                             <option id="option_2" value="wantToRead">Want to Read</option>

@@ -8,21 +8,19 @@ class Book extends Component {
 
 
   render() { 
-
- 
     console.log(this.props.data.data.booksAPP)
-    console.log(this.props.shelf);
-    console.log(this.props.moveBookHandler);
+    console.log( ...this.props.shelf);
+    console.log(this.props.shelf[0]);
      // let filteredBooks = this.props.books.filter(value => value.shelf === this.props.books[3].shelf);  
     return (
       <React.Fragment>
         {this.state.gotProps && this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
-        <li key={`KRYNUM_${currentItem.id}`}>
+        <li key={`${index}`}>
           <div className="book">
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(evt) => this.props.moveBookHandler(this.props.data.data.booksAPP[index], evt.target.value)}>
+                <select onChange={(evt) => this.props.moveBookHandler(currentItem, evt.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
