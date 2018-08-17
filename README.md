@@ -223,3 +223,17 @@ Books have the same state on both the search page and the main application page:
 All JSX code is formatted properly and functional.
 
 ------------------------------------------------
+
+## Citation
+
+and thanks for your time and help
+
+[Maeva Nap](https://www.youtube.com/watch?v=i6L2jLHV9j8)
+
+[Edoh Kodijo](https://www.youtube.com/watch?v=PF8fCAKR0-I&list=LLsa0LzMzgiJpYpovYxBKGCA&index=12&t=0s)
+
+[stackoverflow](https://stackoverflow.com/questions/28868071/onchange-event-using-react-js-for-drop-down)
+
+[github](https://github.com/facebook/create-react-app)
+
+---------------------------------------------------------------------------------------------------------------------

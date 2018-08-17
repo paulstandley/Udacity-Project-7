@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import './App';
 
 class Book extends Component {
-  state = {
-    gotProps: true,
-  }
-
-
+  
   render() { 
-    console.log(this.props.data.data.booksAPP)
-    console.log( ...this.props.shelf);
-    console.log(this.props.shelf[0]);
-     // let filteredBooks = this.props.books.filter(value => value.shelf === this.props.books[3].shelf);  
+// fragmet displays books with props filtered in list of books.
     return (
       <React.Fragment>
-        {this.state.gotProps && this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
+        {this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
         <li key={`${index}`}>
           <div className="book">
             <div className="book-top">
@@ -39,8 +32,5 @@ class Book extends Component {
     )
   }
 }    
-    
-  // Bed time got to make a props or props ? :) get everything from app or leave it in book
-
- 
+     
 export default Book;
