@@ -12,12 +12,17 @@ class BooksApp extends React.Component {
     displayBooks: [],
     num: 1,
     BOOKS: [],
-    shelf: ["wantToRead", "currentlyReading", "read"], 
+    shelf: [{
+      currentlyReading: ["Currently Reading", "currentlyReading"],
+      wantToRead: ["Want to Read", "wantToRead"],
+      read: ["Read", "read"]
+    }] 
   }
 // call BooksAPI in componentDidMount
   componentDidMount() {
     BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})})
   }
+
 // event hadeling, update book from search then get state 
   moveBookHandler = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
@@ -32,26 +37,38 @@ class BooksApp extends React.Component {
   }
 // update search fill display array then set the state  
   updateDisplay = (query) => {
+    let newQuery;
     let displayBooks = [];
-    this.setState({query});
+    this.queryMethod(query);
+    console.log(query);
     if(query) {
-      BooksAPI.search(query).then(data => {
-        if(data.length) {
-          displayBooks = data.map(() => {
+      newQuery = query;
+      console.log(newQuery)
+      BooksAPI.search(newQuery).then(data => {
+        if (data.length) {
+          displayBooks = data.map((currentValue, index, array) => {
+            console.log(`test this ${this} ${currentValue} $currentValue: ${array[index].title} index: ${index} array at index: ${array[index].imageLinks.thumbnail} :)`)
+            let shelfValueIndex = this.state.booksAPP.findIndex(val => val.key === currentValue.key)
             let num = this.state.booksAPP.findIndex(compVal => compVal.id === data.id);
-            if(num >= 0) {
+            console.log(shelfValueIndex)
+            if (num >= 0) {
               return this.state.booksAPP[num];
-            }else{
+            }
+            else {
               return data;
             }
-          })
+          });
         }
-        this.setState({displayBooks});
-      })
+        this.setState({ displayBooks });
+      });
     }
     else{
       this.setState({displayBooks});
     }
+  }
+
+  queryMethod(query) {
+    this.setState({ query });
   }
 
 //new components ListOfBooks :) and display search  
@@ -87,7 +104,7 @@ class BooksApp extends React.Component {
 
                           </div>
                         </div>
-                      <div className="book-title">{book[index].title ? book[index].title : ''}</div>
+                      <div className="book-title">{book[index].title ? book[index].title.toString() : ''}</div>
                       <div className="book-authors">{book[index].authors ? book[index].authors.toString() : ''}</div>
                     </div>
                   </li>

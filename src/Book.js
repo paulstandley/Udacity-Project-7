@@ -8,7 +8,7 @@ class Book extends Component {
     return (
       <React.Fragment>
         {this.props.length !== 0 ? this.props.shelf.map((currentItem, index, array) => (
-        <li key={`${index}`}>
+        <li key={`${array[index].id}`}>
           <div className="book">
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.length !== 0 ? array[index].imageLinks.thumbnail : ''})` }}></div>
