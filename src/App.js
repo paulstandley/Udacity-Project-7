@@ -6,7 +6,7 @@ import ListOfBooks from './ListOfBooks';
 import './App.css';
 var holder = [];
 
-{/* Udacity i killed it dont wast your time full time job full time studend all out prat  I will have to say sorry for wasting your time so tired I learned this back on project 4 dont summit when tired*/}
+{/* Udacity i fiexed it i think :) */}
 
 
 // get all data set it as state then pass it down as props 
@@ -57,20 +57,18 @@ class BooksApp extends React.Component {
 
             if(num === -1) {
               tempARRAY = this.state.booksAPP[shelfValueIndex];
-// 
+ 
                 if(tempARRAY !== undefined) {
-              
+                  currentValue.shelf = tempARRAY.shelf;
                 }else{
                 
                 currentValue.shelf = 'none';
             
-                }
-      
-                
+                }               
 // update query on return off promise                
                 this.queryMethod(query); 
 // compare values then return new array with shelf values added 
-              
+              console.log(data);
               return data;
             }
             
