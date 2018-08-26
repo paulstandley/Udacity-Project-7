@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import ListOfBooks from './ListOfBooks';
 import './App.css';
 var holder = [];
+
+{/* Udacity i killed it dont wast your time full time job full time studend all out prat  I will have to say sorry for wasting your time so tired I learned this back on project 4 dont summit when tired*/}
+
+
 // get all data set it as state then pass it down as props 
 class BooksApp extends React.Component {
   state = {
@@ -61,7 +65,7 @@ class BooksApp extends React.Component {
                 bookObject.shelf = 'none';
                 holder.push(bookObject);
                 }
-                this.setState({ BOOKS: holder});
+                //this.setState({ BOOKS: holder});
                 
 // update query on return off promise                
                 this.queryMethod(query); 
