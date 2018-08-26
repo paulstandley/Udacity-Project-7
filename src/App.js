@@ -33,6 +33,9 @@ class BooksApp extends React.Component {
 
 // update search fill display array then set the state  
   updateDisplay = (query) => {
+    if(holder.length === 20) {
+      holder = [];
+    }
     let tempARRAY;
     let newQuery;
     let displayBooks = [];
@@ -47,9 +50,10 @@ class BooksApp extends React.Component {
           let num = this.state.booksAPP.findIndex(compVal => compVal.id === data.id);
 // num is allways -1 temp array is a book that is on nain page when underfined 
 // bookObject puts shelf on book off none :)
-          if(num === -1) {
+
+            if(num === -1) {
               tempARRAY = this.state.booksAPP[shelfValueIndex];
-              console.log(holder)
+// soz buggy it will work know
                 if(tempARRAY !== undefined) {
                   holder.push(tempARRAY);
                 }else{
@@ -58,11 +62,14 @@ class BooksApp extends React.Component {
                 holder.push(bookObject);
                 }
                 this.setState({ BOOKS: holder});
+                
 // update query on return off promise                
                 this.queryMethod(query); 
 // compare values then return new array with shelf values added 
-              return holder;
+              
+              return this.state.BOOKS;
             }
+            
             
           });
         }
