@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ListOfBooks from './ListOfBooks';
 import './App.css';
+var holder = [];
 // get all data set it as state then pass it down as props 
 class BooksApp extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})})
   }
-
+  
 // event hadeling, update book from search then get state 
   moveBookHandler = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
@@ -35,35 +36,64 @@ class BooksApp extends React.Component {
 
     //BooksAPI.getAll().then((booksAPP) => {this.setState({booksAPP})});
   }
+
+  
+
 // update search fill display array then set the state  
+
+
+
   updateDisplay = (query) => {
+    let tempARRAY;
     let newQuery;
     let displayBooks = [];
     this.queryMethod(query);
     console.log(query);
-    if(query) {
+    if(query !== '') {
       newQuery = query;
       console.log(newQuery)
       BooksAPI.search(newQuery).then(data => {
         if (data.length) {
           displayBooks = data.map((currentValue, index, array) => {
-            console.log(`test this ${this} ${currentValue} $currentValue: ${array[index].title} index: ${index} array at index: ${array[index].imageLinks.thumbnail} :)`)
-            let shelfValueIndex = this.state.booksAPP.findIndex(val => val.key === currentValue.key)
+            
+            let shelfValueIndex = this.state.booksAPP.findIndex(val => val.id === currentValue.id)
             let num = this.state.booksAPP.findIndex(compVal => compVal.id === data.id);
-            console.log(shelfValueIndex)
-            if (num >= 0) {
-              return this.state.booksAPP[num];
-            }
-            else {
+            
+            console.log(shelfValueIndex === -0);
+            console.log(num === -1)
+// fix this tommorrow OK!
+            if(num !== -1) {
+// this never runs
+              let bookObject = this.state.booksAPP[num];
+              holder.push(bookObject);
+              return bookObject;              
+            }else{
+              tempARRAY = this.state.booksAPP[shelfValueIndex];
+              console.log(holder)
+                if(tempARRAY !== undefined) {
+                  holder.push(tempARRAY);
+                  //this.setState({BOOKS: holder})
+                  console.log(tempARRAY);
+                  console.log(tempARRAY.id);
+                  console.log(tempARRAY.title);
+                  let shelfValue = tempARRAY.shelf;
+                  console.log(this.state.BOOKS)
+                }
+               this.queryMethod(query); 
+                 console.log(holder);
+// compare values then return new array with shelf values added
               return data;
             }
+            
           });
         }
-        this.setState({ displayBooks });
+        
+        query === '' ? this.setState({ displayBooks: [] }) : this.setState({ displayBooks });
+      }).catch((error) => {console.error(error);
       });
     }
     else{
-      this.setState({displayBooks});
+      query === '' ? this.setState({ displayBooks: [] }) : this.setState({ displayBooks });
     }
   }
 
@@ -73,6 +103,10 @@ class BooksApp extends React.Component {
 
 //new components ListOfBooks :) and display search  
   render() {
+    let shelfArray = this.state.displayBooks.map((currentValue, index, array) => {
+      let shelfIndex = this.state.booksAPP.findIndex(val => val.id === currentValue.id)
+        let shelfString = this.state.booksAPP[shelfIndex];
+    })
     const  { query } = this.state;
     return (
       <div className="app">
@@ -81,20 +115,20 @@ class BooksApp extends React.Component {
             <div className="search-books-bar">
               <Link className="close-search" to='./'>Close</Link>
                 <div className="search-books-input-wrapper">
-                  <input type="text" placeholder="Search by title or author" value={query} onChange={(evt) => this.updateDisplay(evt.target.value)}/>
+                  <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={(evt) => this.updateDisplay(evt.target.value)}/>
                 </div>
               </div>
             <div className="search-books-results">
               <ol className="books-grid">
                 {this.state.displayBooks.length !== 0 ? this.state.displayBooks.map((book, index, array) => (
-
+                  
                   <li key={`${book[index].id}`}>
                     <div className="book">
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: book[index].imageLinks ? `url(${book[index].imageLinks.thumbnail})` : '' }}></div>
                           <div className="book-shelf-changer">
 
-                            <select value="none" onChange={(evt) => this.moveBookHandler(book[index], evt.target.value)}>
+                            <select value={this.state.booksAPP.length === 0 ? 'none' : this.state.booksAPP[index]} onChange={(evt) => this.moveBookHandler(book[index], evt.target.value)}>
                               <option value="move" disabled={true}>Move to...</option>
                               <option value="currentlyReading">Currently Reading</option>
                               <option value="wantToRead">Want to Read</option>
