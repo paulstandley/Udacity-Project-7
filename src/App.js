@@ -57,21 +57,21 @@ class BooksApp extends React.Component {
 
             if(num === -1) {
               tempARRAY = this.state.booksAPP[shelfValueIndex];
-// soz buggy it will work know
+// 
                 if(tempARRAY !== undefined) {
-                  holder.push(tempARRAY);
+              
                 }else{
-                let bookObject = array[index];
-                bookObject.shelf = 'none';
-                holder.push(bookObject);
+                
+                currentValue.shelf = 'none';
+            
                 }
-                //this.setState({ BOOKS: holder});
+      
                 
 // update query on return off promise                
                 this.queryMethod(query); 
 // compare values then return new array with shelf values added 
               
-              return this.state.BOOKS;
+              return data;
             }
             
             
