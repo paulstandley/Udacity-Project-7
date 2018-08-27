@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ListOfBooks from './ListOfBooks';
 import './App.css';
-var holder = [];
+
 
 {/* Udacity i fiexed it i think :) */}
 
@@ -37,9 +37,7 @@ class BooksApp extends React.Component {
 
 // update search fill display array then set the state  
   updateDisplay = (query) => {
-    if(holder.length === 20) {
-      holder = [];
-    }
+
     let tempARRAY;
     let newQuery;
     let displayBooks = [];
@@ -67,11 +65,9 @@ class BooksApp extends React.Component {
                 }               
 // update query on return off promise                
                 this.queryMethod(query); 
-// compare values then return new array with shelf values added 
-              console.log(data);
+// compare values then return new array with shelf values added
               return data;
             }
-            
             
           });
         }
