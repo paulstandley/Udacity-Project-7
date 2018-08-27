@@ -95,7 +95,7 @@ class BooksApp extends React.Component {
             <div className="search-books-bar">
               <Link className="close-search" to='./'>Close</Link>
                 <div className="search-books-input-wrapper">
-                  <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={(evt) => this.updateDisplay(evt.target.value)}/>
+                  <input type="text" placeholder="Search by title or author" onChange={(evt) => this.updateDisplay(evt.target.value)}/>
                 </div>
               </div>
             <div className="search-books-results">
