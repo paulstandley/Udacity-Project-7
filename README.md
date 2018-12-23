@@ -241,5 +241,3 @@ and thanks for your time and help
 [Udacity Review 1](https://review.udacity.com/?utm_campaign=ret_000_auto_ndxxx_submission-reviewed&utm_source=blueshift&utm_medium=email&utm_content=reviewsapp-submission-reviewed&bsft_clkid=f4c586a9-6971-41fa-a5a5-2b63cb422dc1&bsft_uid=ed91580d-4503-417b-b860-9958e533e56f&bsft_mid=75084eca-4821-41f9-9ca0-cdeae0ae618e&bsft_eid=6f154690-7543-4582-9be7-e397af208dbd&bsft_txnid=3cc608d7-2d67-4f41-b1fb-701e2c06941c#!/reviews/1406843)
 
 ---------------------------------------------------------------------------------------------------------------------
-
-[reviews]('https://review.udacity.com/?utm_campaign=ret_000_auto_ndxxx_submission-reviewed&utm_source=blueshift&utm_medium=email&utm_content=reviewsapp-submission-reviewed&bsft_clkid=7954c374-ccdd-4a70-b614-2ae2227ffd72&bsft_uid=ed91580d-4503-417b-b860-9958e533e56f&bsft_mid=ca10a6e4-5efd-42dc-97f7-1369b32ffe33&bsft_eid=6f154690-7543-4582-9be7-e397af208dbd&bsft_txnid=854beecb-8110-4dc8-9842-78397a88d396#!/reviews/1423607')
